@@ -6,7 +6,11 @@
 summ = int(input())
 proiz = int(input())
 
-x1 = (-(-summ) - (summ**2 - 4 * proiz)**0.5) / 2
-x2 = (-(-summ) + (summ**2 - 4 * proiz)**0.5) / 2
+D = (summ**2 - 4 * proiz)**0.5
+x1 = (-(-summ) - D) / 2
+x2 = (-(-summ) + D) / 2
 
-print(f'The first number is {int(x1)} and the second number is {int(x2)}.')
+if D >= 0:
+    print(f'The first number is {int(x1)} and the second number is {int(x2)}.')
+else:
+    print("Корней нет")
