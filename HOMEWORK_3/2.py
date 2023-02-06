@@ -5,6 +5,12 @@ list.append(number)
 list.sort()
 if number != max(list):
     index_number = list.index(number)
-    print(f"Neighbour of number {number} is {list[index_number + 1]}")
+    if list[index_number] - list[index_number - 1] > list[index_number + 1] - list[index_number]:
+        print(f"Neighbour of number {number} is {list[index_number + 1]}")
+    elif list[index_number] - list[index_number - 1] == list[index_number + 1] - list[index_number]:
+        print(f"Neighbour of number {number} is {min(list[index_number + 1], list[index_number - 1])}")
+    else:
+         print(f"Neighbour of number {number} is {list[index_number - 1]}")
+
 else:
     print(f"Neighbour of number {number} is {list[len(list)-2]}")
