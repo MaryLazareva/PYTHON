@@ -13,7 +13,7 @@ if not path.exists(file_base):
 
 def read_records():
     global all_data, id, all_data_without_id
-    with open(file_base) as f:
+    with open(file_base, encoding="utf-8") as f:
 
         all_data = [i.strip() for i in f]
         all_data_without_id = [i[2:] for i in all_data]
@@ -69,9 +69,19 @@ def search():
 def delete():
 
     del_param = input("Input delete parameter: ")
+    flag = False
     for string in all_data:
-        if del_param != string[0]:
-            print(string)
+        if del_param == string[0]:
+            f = open(file_base, encoding="utf-8").read()
+            a = f.replace(f'{string}\n', '')
+            with open(file_base, 'w', encoding="utf-8") as f:
+                f.write(a)
+                flag = True
+                print(a)
+                break
+
+    if flag == False:
+        print("No id for deletion")
 
 
 def main_menu():
